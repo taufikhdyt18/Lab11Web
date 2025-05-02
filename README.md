@@ -1,60 +1,104 @@
-# CodeIgniter 4 Framework
+# PHP Framework (Codeigniter4)
+| Praktikum 4-6  |  Pemrograman Web 2  
+|-------|---------
+| NIM   | 312310576
+| Nama  | Taufik Hidayat
+| Kelas | TI.23.A6
+| Dosen |  Agung Nugroho, S.Kom., M.Kom.
 
-## What is CodeIgniter?
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Praktikum 4
+### Langkah-langkah Praktikum
+- Membuat Table User
+```
+CREATE TABLE user (
+ id INT(11) auto_increment,
+ username VARCHAR(200) NOT NULL,
+ useremail VARCHAR(200),
+ userpassword VARCHAR(200),
+ PRIMARY KEY(id)
+);
+```
+- Membuat Model User
+![image](ss/ssmodel.png)
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- Membuat Database Seeder
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Database seeder digunakan untuk membuat data dummy. Untuk keperluan ujicoba modul
+login, kita perlu memasukkan data user dan password kedalam database. Untuk itu buat
+database seeder untuk tabel user. Buka CLI, kemudian tulis perintah berikut:
+![image](ss/userseeder.png)
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+Selanjutnya, buka file UserSeeder.php yang berada di lokasi direktori
+/app/Database/Seeds/UserSeeder.php kemudian isi dengan kode berikut:
+![image](ss/seeds.png)
 
-## Important Change with index.php
+Selanjutnya buka kembali CLI dan ketik perintah berikut:
+![image](ss/saveseeds.png)
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+- Uji Coba Login
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+Selanjutnya buka url http://localhost:8080/user/login seperti berikut:
+![image](ss/login2.png)
 
-**Please** read the user guide for a better explanation of how CI4 works!
+- Menambahkan Auth Filter
 
-## Repository Management
+Selanjutnya membuat filer untuk halaman admin. Buat file baru dengan nama Auth.php pada
+direktori app/Filters. 
+![image](ss/auth.png)
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+Selanjutnya buka file app/Config/Filters.php tambahkan kode berikut:
+```
+'auth' => App\Filters\Auth::class
+```
+![image](ss/filters.png)
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Selanjutnya buka file app/Config/Routes.php dan sesuaikan kodenya.
+![image](ss/routes.png)
 
-## Contributing
+Percobaan Akses Menu Admin
 
-We welcome contributions from the community.
+Buka url dengan alamat http://localhost:8080/admin/artikel ketika alamat tersebut diakses
+maka, akan dimuculkan halaman login. 
+![image](ss/adminartikel.png)
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+## Praktikum 5
+- Membuat Pagination
 
-## Server Requirements
+Pagination adalah teknik yang digunakan untuk membatasi jumlah besar data yang ditampilkan pada sebuah situs web menjadi beberapa halaman, tergantung pada jumlah data yang akan ditampilkan pada setiap halaman.
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+Untuk membuat pagination, buka Kembali App/Controller/Artikel, kemudian modifikasi kode
+pada method public function admin_index seperti berikut.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+![image](ss/adminindex.png)
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
+Dan pada link pager ubah seperti berikut.
+App/Views/artikel/admin_index.php bagian paling bawah diatas footer
+![image](ss/pagination.png)
+
+Hasilnya akan seperti ini:
+
+![image](ss/goon5.png)
+
+### Praktikum 6
+- Menambahkan fungsi unggah gambar pada tambah artikel.
+
+Buka kembali Controller Artikel pada project sebelumnya, sesuaikan kode pada method
+add seperti berikut:
+
+![image](ss/functionadd.png)
+
+Kemudian pada file views/artikel/form_add.php tambahkan field input file seperti
+berikut:
+
+![image](ss/formadd.png)
+
+Ujicoba file upload dengan mengakses menu tambah artikel.
+
+![image](ss/tmbhartikel.png)
+
+
+## Selesai & Terimakasih
