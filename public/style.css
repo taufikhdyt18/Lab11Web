@@ -1,0 +1,299 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  }
+  
+  :root {
+    --bein-primary: #323B60;
+    --bein-secondary: #000000;
+    --bein-gradient: linear-gradient(135deg, #323B60, #000000);
+    --bein-bg: #f6f6f6;
+    --bein-card: #fff;
+    --bein-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    --bein-radius: 14px;
+    --bein-blue: #323B60;
+  }
+  
+  body {
+    background: var(--bein-bg);
+    color: #222;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+  }
+  
+  #container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 32px auto;
+    background: var(--bein-card);
+    box-shadow: var(--bein-shadow);
+    border-radius: var(--bein-radius);
+    overflow: hidden;
+  }
+  
+  /* Header */
+  header {
+    background: var(--bein-gradient);
+    padding: 32px 36px 24px 36px;
+    text-align: left;
+  }
+  
+  header h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  
+  /* Navigation */
+  nav {
+    background: var(--bein-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 4px solid var(--bein-primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 18px 32px;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: background 0.2s, color 0.2s;
+    display: block;
+    text-align: center;
+  }
+  
+  nav a.active, nav a:hover {
+    background: var(--bein-primary);
+    color: #fff;
+  }
+  
+  nav a.active::after, nav a:hover::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 6px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--bein-blue);
+  }
+  
+  /* Responsive Navigation */
+  @media screen and (max-width: 768px) {
+    nav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a {
+      padding: 12px 18px;
+      font-size: 15px;
+    }
+  }
+  @media (max-width: 576px) {
+    nav a {
+      padding: 10px 8px;
+    }
+  }
+  
+  /* Wrapper */
+  #wrapper {
+    display: flex;
+    gap: 36px;
+    padding: 40px 32px;
+  }
+  #main {
+    flex: 7;
+    padding: 0 12px;
+  }
+  #main h2 {
+    color: var(--bein-primary);
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid var(--bein-blue);
+    padding-bottom: 8px;
+  }
+  #main p {
+    margin-bottom: 26px;
+    color: #444;
+    font-size: 17px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 18px;
+  }
+  
+  /* Sidebar */
+  #sidebar {
+    flex: 3;
+  }
+  .widget-box {
+    background: var(--bein-card);
+    border-radius: var(--bein-radius);
+    box-shadow: var(--bein-shadow);
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .widget-box .title {
+    background: var(--bein-gradient);
+    color: #fff;
+    padding: 18px;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+  .widget-box ul {
+    list-style: none;
+    padding: 0 18px 12px 18px;
+  }
+  .widget-box ul li {
+    border-bottom: 1px solid #eee;
+    padding: 14px 0;
+  }
+  .widget-box ul li:last-child {
+    border-bottom: none;
+  }
+  .widget-box ul li a {
+    color: var(--bein-primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding-left: 10px;
+    position: relative;
+    display: block;
+  }
+  .widget-box ul li a:hover {
+    color: var(--bein-blue);
+    text-decoration: underline;
+  }
+  .widget-box p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
+    padding: 15px;
+  }
+  
+  /* Table Styling */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--bein-shadow);
+    background: var(--bein-card);
+  }
+  .table th {
+    background: var(--bein-gradient);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 18px;
+    border: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+  }
+  .table tr:last-child td {
+    border-bottom: none;
+  }
+  .table tbody tr:hover {
+    background: #f3f6fa;
+  }
+  
+  /* Buttons */
+  .btn, .btn-blue, .btn-danger, .btn-gray, .btn-primary {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: var(--bein-gradient);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+    transition: background 0.2s, transform 0.2s;
+    text-align: center;
+    display: inline-block;
+  }
+  .btn:hover, .btn-blue:hover, .btn-primary:hover {
+    background: linear-gradient(135deg, #000000, #323B60);
+    transform: translateY(-2px) scale(1.03);
+  }
+  .btn-danger {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  }
+  .btn-danger:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  }
+  .btn-gray {
+    background: linear-gradient(135deg, #606c88, #3f4c6b);
+  }
+  .btn-gray:hover {
+    background: linear-gradient(135deg, #3f4c6b, #606c88);
+  }
+  
+  /* Footer */
+  footer {
+    background: var(--bein-secondary);
+    color: #fff;
+    text-align: center;
+    padding: 24px;
+    font-size: 16px;
+    border-radius: 0 0 var(--bein-radius) var(--bein-radius);
+    margin-top: 40px;
+    letter-spacing: 1px;
+  }
+  
+  /* Responsive Layout */
+  @media (max-width: 992px) {
+    #wrapper {
+      flex-direction: column;
+      padding: 24px 8px;
+    }
+    #sidebar {
+      margin-top: 24px;
+    }
+    #container {
+      width: 98%;
+    }
+  }
+  @media (max-width: 768px) {
+    #login-wrapper {
+      width: 98%;
+      max-width: 400px;
+    }
+    .form-search {
+      flex-direction: column;
+    }
+    .form-search input[type="text"] {
+      width: 100%;
+    }
+  }
+  @media (max-width: 576px) {
+    header {
+      padding: 18px 8px;
+    }
+    #wrapper {
+      padding: 8px;
+    }
+  }
+  
+  /* Form, Pagination, etc: lanjutkan sesuai kebutuhan dengan warna dan font konsisten */
+  
+  
